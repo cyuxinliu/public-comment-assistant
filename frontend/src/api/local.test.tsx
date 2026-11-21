@@ -18,9 +18,31 @@ describe('verified local permit integration', () => {
   })
   it('defaults to the shared real record and rejects missing permits', async () => {
     expect(USE_LOCAL_DATA).toBe(true)
-    expect((await api.listPermits()).map(p => p.permitNumber)).toEqual(['PAL50'])
+    expect((await api.listPermits()).map(p => p.permitNumber)).toEqual(['PAL50', '124670', '182843', 'O1636'])
     expect(await api.getPermit(permit.id)).toEqual(permit)
     await expect(api.getPermit('missing')).rejects.toMatchObject({ status: 404 })
+  })
+
+  it('does not reuse the PAL50 sample for summary-only permits', async () => {
+    for (const summary of localPermits.slice(1)) {
+      expect(await api.getPermit(summary.id)).toEqual(summary)
+      const answer = await api.ask({ ...request, permitId: summary.id })
+      expect(answer.status).toBe('no_evidence')
+      expect(answer.citations).toEqual([])
+      expect(answer.answer).toBe('')
+    }
+  })
+
+  it('opens a summary with an official notice and no sample question controls', async () => {
+    const summary = localPermits[1]
+    render(<MemoryRouter initialEntries={[`/permits/${summary.id}`]}><Routes>
+      <Route path="/permits/:permitId" element={<PermitDetailPage />} />
+    </Routes></MemoryRouter>)
+    expect(await screen.findByRole('heading', { name: summary.facilityName })).toBeInTheDocument()
+    expect(screen.getByText('Summary only')).toBeInTheDocument()
+    expect(screen.getByText('Deadline unverified')).toBeInTheDocument()
+    expect(screen.getAllByRole('link').some(a => a.getAttribute('href') === summary.sources[0].url)).toBe(true)
+    expect(screen.queryByRole('button', { name: 'View sample answer' })).not.toBeInTheDocument()
   })
 
   it('uses exact, resolvable evidence for the sample without mixing scopes', async () => {

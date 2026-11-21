@@ -15,7 +15,7 @@ export function Layout({ children }: { children: ReactNode }) {
       )}
       {USE_LOCAL_DATA && (
         <div role="note" className="border-b border-teal-200 bg-teal-50 px-4 py-2 text-center text-sm text-teal-950">
-          Verified PAL50 records · Questions use one labeled sample answer. General document search is not connected yet.
+          Four real Beaumont permit cases · PAL50 includes a labeled sample answer; the other cases have notice summaries. General document search is not connected yet.
         </div>
       )}
       <header className="border-b border-slate-200 bg-white">

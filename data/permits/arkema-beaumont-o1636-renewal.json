@@ -1,0 +1,47 @@
+{
+  "id": "arkema-beaumont-o1636-renewal",
+  "permitNumber": "O1636",
+  "facilityName": "Arkema Beaumont Plant",
+  "proposalSummary": "Arkema Inc. applied to renew the federal operating permit for its organic chemical manufacturing plant at 2810 Gulf States Road. This permit lists operating requirements and does not authorize new construction.",
+  "permitType": "Federal operating permit renewal",
+  "location": {
+    "city": "Beaumont",
+    "county": "Jefferson"
+  },
+  "publicComment": {
+    "status": "unverified",
+    "deadline": null,
+    "noticeSourceId": "src-notice"
+  },
+  "dataStatus": "verified",
+  "caseCompleteness": "summary",
+  "sources": [
+    {
+      "id": "src-notice",
+      "title": "Notice of Draft Federal Operating Permit — O1636, Application 39499 (public-notice package)",
+      "url": "https://records.tceq.texas.gov/cs/idcplg?IdcService=TCEQ_EXTERNAL_SEARCH_GET_FILE&Rendition=Web&dID=10244687&searchType=External",
+      "scope": "permit",
+      "documentType": "official_notice",
+      "publisher": "Texas Commission on Environmental Quality",
+      "date": "2026-11-03",
+      "passages": [
+        {
+          "id": "n1",
+          "text": "Draft Permit No.: O1636",
+          "locator": "PDF p. 10, notice heading"
+        },
+        {
+          "id": "n2",
+          "text": "The permit will not authorize new construction.",
+          "locator": "PDF p. 10, Application and Draft Permit"
+        },
+        {
+          "id": "n3",
+          "text": "2810 Gulf States Road in Beaumont, Jefferson County, Texas 77701.",
+          "locator": "PDF p. 10, Application and Draft Permit, facility address"
+        }
+      ]
+    }
+  ],
+  "viewpoints": []
+}

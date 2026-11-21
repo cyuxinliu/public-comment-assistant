@@ -1,0 +1,47 @@
+{
+  "id": "g3-chickadee-beaumont-124670-renewal",
+  "permitNumber": "124670",
+  "facilityName": "G-3 Chickadee Purchaser chemical plant",
+  "proposalSummary": "G-3 Chickadee Purchaser, LLC applied to renew the air permit for its chemical plant at 11357 Interstate Highway 10. The notice also describes incorporating other authorizations and changes in emission factors, with an amendment being reviewed alongside the renewal.",
+  "permitType": "Air quality permit renewal",
+  "location": {
+    "city": "Beaumont",
+    "county": "Jefferson"
+  },
+  "publicComment": {
+    "status": "unverified",
+    "deadline": null,
+    "noticeSourceId": "src-notice"
+  },
+  "dataStatus": "verified",
+  "caseCompleteness": "summary",
+  "sources": [
+    {
+      "id": "src-notice",
+      "title": "Notice of Receipt of Application and Intent to Obtain Air Permit (NORI) Renewal — 124670",
+      "url": "https://www.tceq.texas.gov/downloads/permitting/air/bilingual/pending-permit-notices/124670-nori-english.pdf/%40%40download/file/124670-nori-english.pdf",
+      "scope": "permit",
+      "documentType": "official_notice",
+      "publisher": "Texas Commission on Environmental Quality",
+      "date": "2026-01-27",
+      "passages": [
+        {
+          "id": "n1",
+          "text": "renewal of Air Quality Permit Number 124670",
+          "locator": "p. 1, APPLICATION, permit/action excerpt"
+        },
+        {
+          "id": "n2",
+          "text": "continued operation of a chemical plant",
+          "locator": "p. 1, APPLICATION, requested operation excerpt"
+        },
+        {
+          "id": "n3",
+          "text": "11357 Interstate Highway 10, Beaumont, Jefferson County, Texas 77705.",
+          "locator": "p. 1, APPLICATION, facility address"
+        }
+      ]
+    }
+  ],
+  "viewpoints": []
+}

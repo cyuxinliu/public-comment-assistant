@@ -5,7 +5,7 @@ import { CommentStatusPanel } from '../components/permit/CommentStatusPanel'
 import { FacilityHistory } from '../components/permit/FacilityHistory'
 import { SourceList } from '../components/permit/SourceList'
 import { ViewpointList } from '../components/permit/ViewpointList'
-import { MockBadge } from '../components/ui/Badge'
+import { Badge, MockBadge } from '../components/ui/Badge'
 import { ArrowLeftIcon, MapPinIcon } from '../components/ui/Icons'
 import { Section } from '../components/ui/Section'
 import { ErrorState } from '../components/ui/States'
@@ -55,6 +55,7 @@ function PermitDetail({ permit }: { permit: import('../types').Permit }) {
           <div className="flex flex-wrap items-center gap-2">
             <span className="text-sm font-medium text-slate-500">Permit {permit.permitNumber}</span>
             {permit.dataStatus === 'mock' && <MockBadge />}
+            {permit.caseCompleteness && <Badge>{permit.caseCompleteness === 'summary' ? 'Summary only' : 'Full case'}</Badge>}
           </div>
           <h1 className="mt-1 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">{permit.facilityName}</h1>
           <p className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
@@ -73,7 +74,9 @@ function PermitDetail({ permit }: { permit: import('../types').Permit }) {
       <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
         <div className="min-w-0 space-y-6">
           <Section id="ask" title="Ask about this permit" description="Get a short answer with the exact passages it comes from, so you can check them yourself.">
-            <QuestionBox permit={permit} />
+            {permit.caseCompleteness === 'summary' ? (
+              <p className="text-sm text-slate-700">Only an official-notice summary is loaded for this case. Technical documents, facility history, viewpoints, and answers have not been loaded. Open the notice in Permit documents, or <Link to="/permits/exxonmobil-beaumont-pal50-renewal" className={link}>try the complete PAL50 case</Link>.</p>
+            ) : <QuestionBox key={permit.id} permit={permit} />}
           </Section>
 
           <Section id="viewpoints" title="What people are saying" description="Positions taken by the applicant, the agency, and community groups, each linked to its source.">

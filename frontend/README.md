@@ -13,7 +13,9 @@ npm run lint
 ## Mock mode vs. real backend
 
 With `VITE_API_BASE_URL` unset and `VITE_USE_MOCKS` false (the defaults), the app
-loads the real PAL50 record directly from `../data/permits/`. No backend is needed.
+loads four real Beaumont records directly from `../data/permits/`. No backend is needed.
+PAL50 is the complete case; the three additional cases are labeled Summary only
+and provide official notices with unverified current comment status/deadlines.
 The list, detail page, original source links and citation cards share that JSON.
 The NOx example returns a labeled **Sample answer**, with exact excerpts looked up
 by source and passage IDs. Other questions explain that general search is not yet

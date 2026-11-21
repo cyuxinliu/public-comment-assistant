@@ -2,7 +2,10 @@
   "id": "exxonmobil-beaumont-pal50-renewal",
   "permitNumber": "PAL50",
   "facilityName": "ExxonMobil Beaumont Refinery",
-  "location": { "city": "Beaumont", "county": "Jefferson" },
+  "location": {
+    "city": "Beaumont",
+    "county": "Jefferson"
+  },
   "proposalSummary": "ExxonMobil Oil Corporation requested renewal of the refinery's plant-wide nitrogen oxides (NOx) and volatile organic compounds (VOC) limits at their existing levels, with no increase proposed. TCEQ issued the renewal on March 31, 2026.",
   "publicComment": {
     "status": "closed",
@@ -141,5 +144,6 @@
       "summary": "In a May 2017 statement about the earlier Beaumont refinery expansion dispute, Malveaux called for residents to be informed about chemicals emitted into their neighborhoods and for continued vigilance. This is historical facility context, not a position submitted on the 2025–2026 PAL50 renewal.",
       "sourceId": "src-community"
     }
-  ]
+  ],
+  "caseCompleteness": "complete"
 }

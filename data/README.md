@@ -86,3 +86,41 @@ source and passage IDs, and all notice/viewpoint references. All 13 passage text
 were also compared against the downloaded source PDFs with whitespace normalized.
 The frontend integration is checked separately with its API and UI tests. General
 document retrieval is not implemented.
+
+## Additional summary-only cases
+
+Verified November 20, 2026. The default list includes three additional notice-backed
+records. They use `caseCompleteness: summary`; PAL50 uses `complete`. “Verified”
+means the recorded facts and excerpts were checked, not that the current comment
+period is known or that the complete research bundle has been collected.
+
+| JSON file | Proposal | Official source and locator |
+| --- | --- | --- |
+| `permits/g3-chickadee-beaumont-124670-renewal.json` | G-3 Chickadee Purchaser chemical-plant air permit renewal, 11357 Interstate Highway 10 | [TCEQ NORI 124670](https://www.tceq.texas.gov/downloads/permitting/air/bilingual/pending-permit-notices/124670-nori-english.pdf/%40%40download/file/124670-nori-english.pdf), p. 1 APPLICATION; p. 2 notice issuance January 27, 2026 |
+| `permits/hoimyung-beaumont-182843-new.json` | Hoimyung Texas new dispersant production facility, 8745 Industrial Parkway | [TCEQ NORI 182843](https://www.tceq.texas.gov/downloads/permitting/air/bilingual/pending-permit-notices/182843-nori-english.pdf/%40%40download/file/182843-nori-english.pdf), p. 1 APPLICATION; p. 2 notice issuance February 10, 2026 |
+| `permits/arkema-beaumont-o1636-renewal.json` | Arkema Beaumont Plant federal operating permit renewal, 2810 Gulf States Road | [TCEQ notice package O1636](https://records.tceq.texas.gov/cs/idcplg?IdcService=TCEQ_EXTERNAL_SEARCH_GET_FILE&Rendition=Web&dID=10244687&searchType=External), PDF p. 10 Application and Draft Permit; p. 1 cover letter November 3, 2026 |
+
+For each record, the permit number, applicant, proposal, street address, city and
+county were checked within the same official notice. The first two facility labels
+are descriptive names derived from the applicant and facility type; the notices do
+not supply separate formal facility names. Arkema's package also identifies
+RN100216373 and application 39499. Its JSON source date is the package cover date.
+
+All three have `status: unverified`, `deadline: null`. The notices describe public
+participation but do not establish a verified calendar deadline or current open/
+closed status as of this check. Publication-relative hearing-request periods are
+not treated as calendar comment deadlines. A pending-application listing or an old
+notice alone is not proof that comments remain open. Summary text describes the
+application rather than claiming it has been granted. These records are not live
+status tracking and do not include later agency actions. In particular, permit
+182843 also has a later preliminary-decision notice in TCEQ records; its status and
+publication dates would need further verification before any open/closed claim.
+
+These agency notice forms are marked “Example A” or supplied in an official
+publication package; they are not proof-of-publication affidavits. No technical
+review, facility history, or independent viewpoint has been loaded for these cases.
+The UI labels them “Summary only” and does not offer PAL50's sample answer on them.
+
+Validation: all four JSON records parsed, permit IDs were unique, all source
+references resolved, and all nine new passage excerpts matched downloaded official
+PDF text after whitespace normalization. Relevant pages were rendered and inspected.

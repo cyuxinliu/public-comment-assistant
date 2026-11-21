@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { formatDate } from '../../lib/commentStatus'
 import type { PermitSummary } from '../../types'
-import { MockBadge } from '../ui/Badge'
+import { Badge, MockBadge } from '../ui/Badge'
 import { ArrowRightIcon, CalendarIcon, MapPinIcon } from '../ui/Icons'
 import { StatusBadge } from '../ui/StatusBadge'
 
@@ -16,6 +16,7 @@ export function PermitCard({ permit }: { permit: PermitSummary }) {
       <div className="flex flex-wrap items-center gap-2">
         <StatusBadge status={status} />
         {permit.dataStatus === 'mock' && <MockBadge />}
+        {permit.caseCompleteness && <Badge>{permit.caseCompleteness === 'summary' ? 'Summary only' : 'Full case'}</Badge>}
       </div>
 
       <h3 className="mt-3 text-base font-semibold text-slate-900">

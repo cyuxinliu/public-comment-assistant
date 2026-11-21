@@ -1,0 +1,47 @@
+{
+  "id": "hoimyung-beaumont-182843-new",
+  "permitNumber": "182843",
+  "facilityName": "Hoimyung Texas dispersant production facility",
+  "proposalSummary": "Hoimyung Texas, Inc. applied for a new air permit to construct a dispersant production facility at 8745 Industrial Parkway in Beaumont.",
+  "permitType": "New air quality permit",
+  "location": {
+    "city": "Beaumont",
+    "county": "Jefferson"
+  },
+  "publicComment": {
+    "status": "unverified",
+    "deadline": null,
+    "noticeSourceId": "src-notice"
+  },
+  "dataStatus": "verified",
+  "caseCompleteness": "summary",
+  "sources": [
+    {
+      "id": "src-notice",
+      "title": "Notice of Receipt of Application and Intent to Obtain Air Permit (NORI) — 182843",
+      "url": "https://www.tceq.texas.gov/downloads/permitting/air/bilingual/pending-permit-notices/182843-nori-english.pdf/%40%40download/file/182843-nori-english.pdf",
+      "scope": "permit",
+      "documentType": "official_notice",
+      "publisher": "Texas Commission on Environmental Quality",
+      "date": "2026-02-10",
+      "passages": [
+        {
+          "id": "n1",
+          "text": "Issuance of Permit 182843",
+          "locator": "p. 1, APPLICATION, requested authorization"
+        },
+        {
+          "id": "n2",
+          "text": "construction of a dispersant production facility",
+          "locator": "p. 1, APPLICATION, proposed facility excerpt"
+        },
+        {
+          "id": "n3",
+          "text": "8745 Industrial Parkway, Beaumont, Jefferson County, Texas 77705",
+          "locator": "p. 1, APPLICATION, facility address"
+        }
+      ]
+    }
+  ],
+  "viewpoints": []
+}

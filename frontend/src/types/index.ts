@@ -89,6 +89,8 @@ export interface Permit {
   permitType?: string
   /** extension: "mock" records are labeled throughout the UI */
   dataStatus?: DataStatus
+  /** Whether a case has the full curated evidence set or only an official-notice summary. */
+  caseCompleteness?: 'summary' | 'complete'
 }
 
 /** Shape returned by the permit list endpoint. */
@@ -102,6 +104,7 @@ export type PermitSummary = Pick<
   | 'publicComment'
   | 'permitType'
   | 'dataStatus'
+  | 'caseCompleteness'
 >
 
 /** Distinguishes proposed limits from reported emissions (AGENTS.md shared rule). */

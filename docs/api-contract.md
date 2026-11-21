@@ -24,7 +24,8 @@ All responses are JSON. The record shape follows the "Shared permit record forma
         "statusSourceId": "string (optional; official final action supporting status)"
       },
       "permitType": "string (optional)",
-      "dataStatus": "mock | verified (optional)"
+      "dataStatus": "mock | verified (optional)",
+      "caseCompleteness": "summary | complete (optional)"
     }
   ]
 }

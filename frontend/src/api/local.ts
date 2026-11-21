@@ -1,8 +1,11 @@
 import pal50 from '../../../data/permits/exxonmobil-beaumont-pal50-renewal.json'
+import chickadee from '../../../data/permits/g3-chickadee-beaumont-124670-renewal.json'
+import hoimyung from '../../../data/permits/hoimyung-beaumont-182843-new.json'
+import arkema from '../../../data/permits/arkema-beaumont-o1636-renewal.json'
 import type { AIAnswer, AskRequest, Citation, Permit } from '../types'
 
 // Consume the shared JSON without keeping a second copy of the record.
-export const localPermits: Permit[] = [pal50 as Permit]
+export const localPermits: Permit[] = [pal50, chickadee, hoimyung, arkema] as Permit[]
 export const DEMO_QUESTION = 'Would this renewal let the refinery emit more nitrogen oxides?'
 
 const normalize = (s: string) => s.trim().toLowerCase().replace(/[?.!]+$/, '')
@@ -10,6 +13,12 @@ const normalize = (s: string) => s.trim().toLowerCase().replace(/[?.!]+$/, '')
 /** A single labeled sample, not a retrieval service or a general question matcher. */
 export function localAnswer(permit: Permit, req: AskRequest): AIAnswer {
   const base = { question: req.question, scope: req.scope, isSample: true }
+  if (permit.id !== pal50.id) {
+    return {
+      question: req.question, scope: req.scope, status: 'no_evidence', answer: '', citations: [],
+      missingInfo: 'Only an official-notice summary is loaded for this case. No sample answer or document search is available. Open the original notice for details.',
+    }
+  }
   if (normalize(req.question) !== normalize(DEMO_QUESTION)) {
     return {
       ...base, status: 'needs_clarification', answer: '', citations: [],
