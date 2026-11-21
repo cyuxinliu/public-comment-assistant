@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
-import { USE_MOCKS } from '../api'
+import { USE_LOCAL_DATA, USE_MOCKS } from '../api'
 
 export function Layout({ children }: { children: ReactNode }) {
   return (
@@ -11,6 +11,11 @@ export function Layout({ children }: { children: ReactNode }) {
       {USE_MOCKS && (
         <div role="note" className="border-b border-amber-300 bg-amber-50 px-4 py-2 text-center text-sm text-amber-900">
           <strong className="font-semibold">Demo mode:</strong> all permits, documents, viewpoints, and AI answers shown are mock placeholders, not real records.
+        </div>
+      )}
+      {USE_LOCAL_DATA && (
+        <div role="note" className="border-b border-teal-200 bg-teal-50 px-4 py-2 text-center text-sm text-teal-950">
+          Verified PAL50 records · Questions use one labeled sample answer. General document search is not connected yet.
         </div>
       )}
       <header className="border-b border-slate-200 bg-white">

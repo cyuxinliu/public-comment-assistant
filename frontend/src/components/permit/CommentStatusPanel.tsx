@@ -6,12 +6,13 @@ import { link } from '../ui/buttonStyles'
 
 const copy = {
   open: 'The official notice says public comments are being accepted.',
-  closed: 'The official notice shows the comment period has ended.',
+  closed: 'Public comment on this permit action is closed.',
   unverified: 'We could not confirm the comment period from an official agency record. This does not mean comments are closed — check with the agency.',
 }
 
 export function CommentStatusPanel({ permit }: { permit: Permit }) {
   const r = resolveCommentStatus(permit.publicComment, permit.sources)
+  const statusSource = permit.sources.find(s => s.id === permit.publicComment.statusSourceId)
   const days = r.deadline && r.status === 'open' && !r.deadlinePassed ? daysUntil(r.deadline) : null
 
   return (
@@ -33,6 +34,13 @@ export function CommentStatusPanel({ permit }: { permit: Permit }) {
 
       <p className="mt-3 text-sm text-slate-600">{copy[r.status]}</p>
 
+      {statusSource && (
+        <p className="mt-3 text-sm text-slate-600">
+          Status based on: <a href={statusSource.url} target="_blank" rel="noopener noreferrer" className={link}>{statusSource.title}</a>
+          {statusSource.date && <> · {formatDate(statusSource.date)}</>}
+        </p>
+      )}
+
       {r.note && (
         <p className="mt-3 flex gap-2 rounded-md bg-amber-50 p-2.5 text-sm text-amber-900">
           <AlertIcon className="mt-0.5 shrink-0" /> {r.note}
@@ -42,7 +50,7 @@ export function CommentStatusPanel({ permit }: { permit: Permit }) {
       <div className="mt-4 border-t border-slate-100 pt-3 text-sm">
         {r.notice ? (
           <a href={r.notice.url} target="_blank" rel="noopener noreferrer" className={`inline-flex items-center gap-1 ${link}`}>
-            Verified from: {r.notice.title} <ExternalLinkIcon className="shrink-0" />
+            Official notice: {r.notice.title} <ExternalLinkIcon className="shrink-0" />
             <span className="sr-only">(opens in a new tab)</span>
           </a>
         ) : (

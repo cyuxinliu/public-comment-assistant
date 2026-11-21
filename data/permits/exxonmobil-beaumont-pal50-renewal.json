@@ -1,0 +1,145 @@
+{
+  "id": "exxonmobil-beaumont-pal50-renewal",
+  "permitNumber": "PAL50",
+  "facilityName": "ExxonMobil Beaumont Refinery",
+  "location": { "city": "Beaumont", "county": "Jefferson" },
+  "proposalSummary": "ExxonMobil Oil Corporation requested renewal of the refinery's plant-wide nitrogen oxides (NOx) and volatile organic compounds (VOC) limits at their existing levels, with no increase proposed. TCEQ issued the renewal on March 31, 2026.",
+  "publicComment": {
+    "status": "closed",
+    "deadline": null,
+    "noticeSourceId": "src-notice",
+    "statusSourceId": "src-final-action"
+  },
+  "permitType": "Plant-wide Applicability Limit air permit renewal",
+  "dataStatus": "verified",
+  "sources": [
+    {
+      "id": "src-notice",
+      "title": "Notice of Application and Preliminary Decision for an Air Quality Permit — PAL50 (official publication package)",
+      "url": "https://records.tceq.texas.gov/cs/idcplg?IdcService=TCEQ_EXTERNAL_SEARCH_GET_FILE&dID=9371443&Rendition=Web&searchType=External",
+      "scope": "permit",
+      "documentType": "official_notice",
+      "publisher": "Texas Commission on Environmental Quality",
+      "date": "2025-12-19",
+      "passages": [
+        {
+          "id": "n1",
+          "text": "AIR QUALITY PERMIT NUMBER: PAL50",
+          "locator": "PDF p. 4, Example A, permit-number heading"
+        },
+        {
+          "id": "n2",
+          "text": "within 30 days of the date of newspaper publication of this notice",
+          "locator": "PDF p. 4, PUBLIC COMMENT/PUBLIC MEETING, excerpt from final sentence; publication-relative window, not a calendar deadline"
+        },
+        {
+          "id": "n3",
+          "text": "ExxonMobil Beaumont Refinery",
+          "locator": "PDF p. 4, APPLICATION AND PRELIMINARY DECISION, facility name"
+        }
+      ]
+    },
+    {
+      "id": "src-technical",
+      "title": "Plantwide Applicability Limit Permit Renewal — Source Analysis & Technical Review, PAL50, Project 396197",
+      "url": "https://records.tceq.texas.gov/cs/idcplg?IdcService=TCEQ_EXTERNAL_SEARCH_GET_FILE&dID=9581589&Rendition=Web&searchType=External",
+      "scope": "permit",
+      "documentType": "technical_review",
+      "publisher": "Texas Commission on Environmental Quality",
+      "date": "2026-03-31",
+      "passages": [
+        {
+          "id": "t1",
+          "text": "No increase to existing emission caps or allowable emissions are proposed in this permit renewal.",
+          "locator": "p. 1, Project Overview, final sentence"
+        },
+        {
+          "id": "t2",
+          "text": "2088.19",
+          "locator": "p. 1, Emission Summary, NOx row, Proposed PAL (tpy) column — proposed limit, not reported emissions"
+        },
+        {
+          "id": "t3",
+          "text": "2088.19",
+          "locator": "p. 1, Emission Summary, NOx row, Existing PAL (tpy) column — existing limit, not reported emissions"
+        },
+        {
+          "id": "t4",
+          "text": "2749.22",
+          "locator": "p. 1, Emission Summary, VOC row, Proposed PAL (tpy) column — proposed limit, not reported emissions"
+        }
+      ]
+    },
+    {
+      "id": "src-history",
+      "title": "ExxonMobil Beaumont Refinery — TCEQ Investigation Report 1625700 and PAL50 semiannual reports",
+      "url": "https://records.tceq.texas.gov/cs/idcplg?IdcService=TCEQ_EXTERNAL_SEARCH_GET_FILE&dID=4978647&Rendition=Web&searchType=External",
+      "scope": "facility_history",
+      "documentType": "facility_record",
+      "publisher": "Texas Commission on Environmental Quality",
+      "date": "2020-02-03",
+      "passages": [
+        {
+          "id": "h1",
+          "text": "No violations were documented during the course of this investigation.",
+          "locator": "Report p. 2 of 4 (PDF p. 3), INTRODUCTION — limited to this report-review investigation"
+        },
+        {
+          "id": "h2",
+          "text": "December 2019, NOx was 1635.62 tpy, VOC was 2068.86 tpy",
+          "locator": "Report p. 3 of 4 (PDF p. 4), ADDITIONAL INFORMATION, December 2019 line — reported 12-month rolling emissions, not proposed limits"
+        }
+      ]
+    },
+    {
+      "id": "src-community",
+      "title": "Community Demands Justice After 15 Year Delay — EPA issues long-overdue resolution agreement in Texas; community not satisfied",
+      "url": "https://law.yale.edu/sites/default/files/area/clinic/document/beaumont_press_release_final.pdf",
+      "scope": "facility_history",
+      "documentType": "other",
+      "publisher": "Yale Law School Environmental Justice Clinic (hosted press release)",
+      "date": "2017-05-26",
+      "passages": [
+        {
+          "id": "c1",
+          "text": "People need to be informed about the type of chemicals that are being emitted into the neighborhoods",
+          "locator": "PDF p. 2, Reverend Roy Malveaux paragraph, first quotation (excerpt); historical refinery concern, not a PAL50 renewal comment"
+        },
+        {
+          "id": "c2",
+          "text": "we’re going to have to be vigilant.",
+          "locator": "PDF p. 2, Reverend Roy Malveaux paragraph, second quotation (excerpt); historical refinery concern"
+        }
+      ]
+    },
+    {
+      "id": "src-final-action",
+      "title": "PAL50 Permit Renewal — Final Action, Project 396197",
+      "url": "https://records.tceq.texas.gov/cs/idcplg?IdcService=TCEQ_EXTERNAL_SEARCH_GET_FILE&dID=9614261&Rendition=Web&searchType=External",
+      "scope": "permit",
+      "documentType": "other",
+      "publisher": "Texas Commission on Environmental Quality",
+      "date": "2026-03-31",
+      "passages": [
+        {
+          "id": "f1",
+          "text": "Permit Number PAL50 is hereby renewed.",
+          "locator": "p. 1, decision paragraph — final issuance supporting closed comment status for Project 396197"
+        },
+        {
+          "id": "f2",
+          "text": "Expiration Date: March 31, 2036",
+          "locator": "p. 1, Re: Permit Renewal, expiration field — permit expiration, not comment deadline"
+        }
+      ]
+    }
+  ],
+  "viewpoints": [
+    {
+      "speaker": "Reverend Roy Malveaux, former executive director of People Against Contaminated Environments (PACE)",
+      "speakerRole": "community",
+      "summary": "In a May 2017 statement about the earlier Beaumont refinery expansion dispute, Malveaux called for residents to be informed about chemicals emitted into their neighborhoods and for continued vigilance. This is historical facility context, not a position submitted on the 2025–2026 PAL50 renewal.",
+      "sourceId": "src-community"
+    }
+  ]
+}

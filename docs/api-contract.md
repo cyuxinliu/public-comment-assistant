@@ -20,7 +20,8 @@ All responses are JSON. The record shape follows the "Shared permit record forma
       "publicComment": {
         "status": "open | closed | unverified",
         "deadline": "YYYY-MM-DD | null",
-        "noticeSourceId": "string | null"
+        "noticeSourceId": "string | null",
+        "statusSourceId": "string (optional; official final action supporting status)"
       },
       "permitType": "string (optional)",
       "dataStatus": "mock | verified (optional)"
@@ -60,6 +61,8 @@ Rules:
   agency record in `sources`. Otherwise use `unverified` with `deadline: null`. The UI shows a
   status with no notice as **unverified**.
 - Each `viewpoints[].sourceId` must match a `sources[].id`.
+- Optional `publicComment.statusSourceId` must match a source containing the official
+  decision supporting current status, when that differs from the original notice.
 
 ## `POST /api/permits/:id/ask`
 

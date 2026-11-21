@@ -80,7 +80,7 @@ function PermitDetail({ permit }: { permit: import('../types').Permit }) {
             <ViewpointList viewpoints={permit.viewpoints} sources={permit.sources} />
           </Section>
 
-          <Section id="history" title="Facility history" description="Past records for this facility. Reported emissions are measurements, not permit limits.">
+          <Section id="history" title="Facility history" description="Past records for this facility. Reported emissions are historical reported figures, not permit limits.">
             <FacilityHistory sources={historySources} />
           </Section>
         </div>

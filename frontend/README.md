@@ -12,16 +12,16 @@ npm run lint
 
 ## Mock mode vs. real backend
 
-With `VITE_API_BASE_URL` unset (the default), the app runs entirely on **clearly labeled mock data**
-in `src/mocks/`. Every facility, permit number, date, and viewpoint there is fictional.
-A banner and "Mock data" / "Sample answer" badges label it in the UI.
+With `VITE_API_BASE_URL` unset and `VITE_USE_MOCKS` false (the defaults), the app
+loads the real PAL50 record directly from `../data/permits/`. No backend is needed.
+The list, detail page, original source links and citation cards share that JSON.
+The NOx example returns a labeled **Sample answer**, with exact excerpts looked up
+by source and passage IDs. Other questions explain that general search is not yet
+connected. Facility-history-only scope cannot answer the renewal comparison.
 
-To use the real backend, copy `.env.example` to `.env.local` and set
-`VITE_API_BASE_URL=http://localhost:8000`. Endpoints and payloads are in
-[`../docs/api-contract.md`](../docs/api-contract.md).
-
-In mock mode, the question box has a **Demo controls** panel that forces each answer state:
-loading, error, empty, insufficient evidence, and clarification.
+Set `VITE_USE_MOCKS=true` to opt into the existing fictional development fixtures
+and demo controls. To use a real backend, set `VITE_API_BASE_URL` to its origin and
+leave `VITE_USE_MOCKS=false`. Endpoints are in `../docs/api-contract.md`.
 
 ## Layout
 
@@ -38,9 +38,14 @@ loading, error, empty, insufficient evidence, and clarification.
 
 ## Demo script (check-in)
 
-1. Open the list, then **Placeholder Refinery**. The status shows open, with the deadline and the notice it was verified from.
-2. Read the summary, documents, "What people are saying", and facility history.
-3. Ask *"Would this renewal let the refinery emit more nitrogen oxides?"* with **Both** selected.
-4. Proposed limits and reported emissions get separate labels. Click **Open original source**: the cited passage is highlighted.
-5. Click **Copy excerpt and citation**.
-6. Optionally switch the scope to **Facility history** to show the insufficient-evidence state.
+1. Open the list, then **ExxonMobil Beaumont Refinery — PAL50**.
+2. Confirm closed comment status, the final-action link and **Deadline unverified**.
+3. Review the official notice, technical review, history and attributed 2017 concern.
+4. Choose **This permit** or **Both**, select the NOx example, then **View sample answer**.
+5. Confirm the answer says the existing NOx cap does not increase and is labeled Sample.
+6. Open the original technical review, check p. 1, then copy an excerpt and citation.
+7. Choose **Facility history** to see the scope limitation.
+
+For static hosting, build with `npm run build`, publish `dist`, and configure SPA
+routes to fall back to `index.html`. The shared JSON is bundled into the build;
+no separate data server or API environment variable is required for this preview.

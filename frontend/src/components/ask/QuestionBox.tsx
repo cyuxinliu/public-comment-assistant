@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef, useState, type FormEvent } from 'react'
-import { api, getMockScenario, setMockScenario, USE_MOCKS } from '../../api'
+import { api, getMockScenario, setMockScenario, USE_LOCAL_DATA, USE_MOCKS } from '../../api'
+import { DEMO_QUESTION } from '../../api/local'
 import { MOCK_SCENARIOS, type MockScenario } from '../../mocks/answers'
 import type { AIAnswer, Permit, SearchScope } from '../../types'
 import { AnswerCard, AnswerLoading } from '../evidence/AnswerCard'
@@ -12,7 +13,7 @@ const SCOPES: { value: SearchScope; label: string; hint: string }[] = [
   { value: 'both', label: 'Both', hint: 'Search everything loaded' },
 ]
 
-const EXAMPLE = 'Would this renewal let the refinery emit more nitrogen oxides?'
+const EXAMPLE = DEMO_QUESTION
 
 type AskState = { status: 'idle' } | { status: 'loading' } | { status: 'error'; message: string } | { status: 'done'; answer: AIAnswer }
 
@@ -69,7 +70,7 @@ export function QuestionBox({ permit }: { permit: Permit }) {
     <div>
       <form onSubmit={onSubmit} className="space-y-4">
         <fieldset>
-          <legend className="text-sm font-medium text-slate-800">Search in</legend>
+          <legend className="text-sm font-medium text-slate-800">{USE_LOCAL_DATA ? 'Include documents from' : 'Search in'}</legend>
           <div className="mt-2 grid gap-2 sm:grid-cols-3">
             {SCOPES.map((o) => (
               <label key={o.value} className="relative flex cursor-pointer flex-col rounded-lg border border-slate-300 bg-white p-3 text-sm has-checked:border-teal-600 has-checked:bg-teal-50 has-checked:ring-1 has-checked:ring-teal-600 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-teal-600">
@@ -105,9 +106,9 @@ export function QuestionBox({ permit }: { permit: Permit }) {
         </div>
 
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <p className="text-xs text-slate-500">Answers come only from the documents loaded for this permit.</p>
+          <p className="text-xs text-slate-500">{USE_LOCAL_DATA ? 'Sample answer only. Try the example question; general search is not connected yet.' : 'Answers come only from the documents loaded for this permit.'}</p>
           <button type="submit" className={btnPrimary} disabled={!question.trim() || state.status === 'loading'}>
-            {state.status === 'loading' ? 'Searching…' : 'Ask'}
+            {state.status === 'loading' ? 'Loading…' : USE_LOCAL_DATA ? 'View sample answer' : 'Ask'}
           </button>
         </div>
 

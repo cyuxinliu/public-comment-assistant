@@ -1,16 +1,18 @@
 /**
  * API service layer. Components import `api` from here and never call fetch directly.
  *
- * - With VITE_API_BASE_URL unset (or VITE_USE_MOCKS=true), all calls are served from
- *   the labeled mock data in src/mocks.
+ * - By default, load the verified shared JSON locally with one labeled sample answer.
+ * - VITE_USE_MOCKS=true explicitly enables fictional development fixtures.
  * - With VITE_API_BASE_URL set, calls go to the endpoints in docs/api-contract.md.
  */
 import { mockAnswer, type MockScenario } from '../mocks/answers'
 import { mockPermits } from '../mocks/permits'
+import { localAnswer, localPermits } from './local'
 import type { AIAnswer, AnswerStatus, AskRequest, Permit, PermitSummary } from '../types'
 
 const BASE_URL = (import.meta.env.VITE_API_BASE_URL ?? '').replace(/\/+$/, '')
-export const USE_MOCKS = !BASE_URL || import.meta.env.VITE_USE_MOCKS === 'true'
+export const USE_MOCKS = import.meta.env.VITE_USE_MOCKS === 'true'
+export const USE_LOCAL_DATA = !BASE_URL && !USE_MOCKS
 
 export class ApiError extends Error {
   readonly status: number | undefined
@@ -116,7 +118,21 @@ const mockApi: PermitApi = {
   },
 }
 
-export const api: PermitApi = USE_MOCKS ? mockApi : httpApi
+const localApi: PermitApi = {
+  async listPermits() { return localPermits.map(toSummary) },
+  async getPermit(id) {
+    const permit = localPermits.find(p => p.id === id)
+    if (!permit) throw new ApiError('Permit not found.', 404)
+    return structuredClone(permit)
+  },
+  async ask(req) {
+    const permit = localPermits.find(p => p.id === req.permitId)
+    if (!permit) throw new ApiError('Permit not found.', 404)
+    return localAnswer(permit, req)
+  },
+}
+
+export const api: PermitApi = USE_MOCKS ? mockApi : USE_LOCAL_DATA ? localApi : httpApi
 
 /** Mock documents are served by the app itself at /documents/:permitId/:sourceId. */
 export const getMockPermit = (id: string) => mockPermits.find((p) => p.id === id)

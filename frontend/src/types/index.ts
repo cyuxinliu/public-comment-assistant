@@ -72,6 +72,8 @@ export interface PublicComment {
   deadline: string | null
   /** id of the official notice in `sources`, or null if no notice is loaded */
   noticeSourceId: string | null
+  /** Optional official decision supporting current status separately from the notice. */
+  statusSourceId?: string
 }
 
 export interface Permit {

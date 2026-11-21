@@ -32,7 +32,7 @@ export function AnswerCard({ answer, sources, permit, onAskSuggested }: Props) {
         {answer.isSample && <MockBadge label="Sample answer" />}
       </header>
       <p className="mt-1 text-xs text-slate-500">
-        “{answer.question}” · searched {scopeText(answer.scope)}
+        “{answer.question}” · {answer.isSample ? 'sample scope:' : 'searched'} {scopeText(answer.scope)}
       </p>
 
       {answer.status === 'needs_clarification' && (
