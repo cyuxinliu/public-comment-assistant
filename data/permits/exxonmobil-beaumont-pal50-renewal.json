@@ -59,7 +59,8 @@
         {
           "id": "t2",
           "text": "2088.19",
-          "locator": "p. 1, Emission Summary, NOx row, Proposed PAL (tpy) column — proposed limit, not reported emissions"
+          "locator": "p. 1, Emission Summary, NOx row, Proposed PAL (tpy) column — proposed limit, not reported emissions",
+          "emissionsKind": "proposed_limit"
         },
         {
           "id": "t3",
@@ -69,7 +70,8 @@
         {
           "id": "t4",
           "text": "2749.22",
-          "locator": "p. 1, Emission Summary, VOC row, Proposed PAL (tpy) column — proposed limit, not reported emissions"
+          "locator": "p. 1, Emission Summary, VOC row, Proposed PAL (tpy) column — proposed limit, not reported emissions",
+          "emissionsKind": "proposed_limit"
         }
       ]
     },
@@ -90,7 +92,8 @@
         {
           "id": "h2",
           "text": "December 2019, NOx was 1635.62 tpy, VOC was 2068.86 tpy",
-          "locator": "Report p. 3 of 4 (PDF p. 4), ADDITIONAL INFORMATION, December 2019 line — reported 12-month rolling emissions, not proposed limits"
+          "locator": "Report p. 3 of 4 (PDF p. 4), ADDITIONAL INFORMATION, December 2019 line — reported 12-month rolling emissions, not proposed limits",
+          "emissionsKind": "reported"
         }
       ]
     },

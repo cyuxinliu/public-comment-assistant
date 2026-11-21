@@ -5,6 +5,8 @@ import { MOCK_SCENARIOS, type MockScenario } from '../../mocks/answers'
 import type { AIAnswer, Permit, SearchScope } from '../../types'
 import { AnswerCard, AnswerLoading } from '../evidence/AnswerCard'
 import { ErrorState } from '../ui/States'
+import { useApiKey } from '../../answer/apiKey'
+import { ApiKeyPanel } from './ApiKeyPanel'
 import { btnPrimary } from '../ui/buttonStyles'
 
 const SCOPES: { value: SearchScope; label: string; hint: string }[] = [
@@ -23,6 +25,9 @@ export function QuestionBox({ permit }: { permit: Permit }) {
   const [state, setState] = useState<AskState>({ status: 'idle' })
   const ctrl = useRef<AbortController | null>(null)
   const ids = useId()
+  const apiKey = useApiKey()
+  /** Local data without the user's own key: only the labeled sample answer is available. */
+  const sampleOnly = USE_LOCAL_DATA && !apiKey
 
   const resultRef = useRef<HTMLDivElement>(null)
 
@@ -68,9 +73,10 @@ export function QuestionBox({ permit }: { permit: Permit }) {
 
   return (
     <div>
+      {USE_LOCAL_DATA && <div className="mb-4"><ApiKeyPanel /></div>}
       <form onSubmit={onSubmit} className="space-y-4">
         <fieldset>
-          <legend className="text-sm font-medium text-slate-800">{USE_LOCAL_DATA ? 'Include documents from' : 'Search in'}</legend>
+          <legend className="text-sm font-medium text-slate-800">{sampleOnly ? 'Include documents from' : 'Search in'}</legend>
           <div className="mt-2 grid gap-2 sm:grid-cols-3">
             {SCOPES.map((o) => (
               <label key={o.value} className="relative flex cursor-pointer flex-col rounded-lg border border-slate-300 bg-white p-3 text-sm has-checked:border-teal-600 has-checked:bg-teal-50 has-checked:ring-1 has-checked:ring-teal-600 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-teal-600">
@@ -106,9 +112,9 @@ export function QuestionBox({ permit }: { permit: Permit }) {
         </div>
 
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <p className="text-xs text-slate-500">{USE_LOCAL_DATA ? 'Sample answer only. Try the example question; general search is not connected yet.' : 'Answers come only from the documents loaded for this permit.'}</p>
+          <p className="text-xs text-slate-500">{sampleOnly ? 'Sample answer only. Try the example question, or add your API key above for live answers.' : 'Answers come only from the documents loaded for this permit. Check each excerpt against the original.'}</p>
           <button type="submit" className={btnPrimary} disabled={!question.trim() || state.status === 'loading'}>
-            {state.status === 'loading' ? 'Loading…' : USE_LOCAL_DATA ? 'View sample answer' : 'Ask'}
+            {state.status === 'loading' ? 'Loading…' : sampleOnly ? 'View sample answer' : 'Ask'}
           </button>
         </div>
 

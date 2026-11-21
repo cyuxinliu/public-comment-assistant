@@ -84,8 +84,13 @@ Validated with Python 3's JSON parser and assertions for required fields, field
 types, allowed status/scope/document-type values, ISO dates, HTTPS URLs, unique
 source and passage IDs, and all notice/viewpoint references. All 13 passage texts
 were also compared against the downloaded source PDFs with whitespace normalized.
-The frontend integration is checked separately with its API and UI tests. General
-document retrieval is not implemented.
+The frontend integration is checked separately with its API and UI tests.
+
+Passages that state an emissions figure carry `emissionsKind`: `t2` and `t4` are
+`proposed_limit`, `h2` is `reported`. `t3` (the existing limit) is left unlabeled
+because it is neither. Component 3 copies these labels onto citations from the record.
+Live answers (Component 3, `frontend/src/answer/`) search the passages in this record
+with the viewer's own API key; they are not a search over the full original PDFs.
 
 ## Additional summary-only cases
 

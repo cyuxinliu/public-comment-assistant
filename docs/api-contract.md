@@ -47,7 +47,12 @@ The full permit record: the fields above, plus:
       "publisher": "string (optional)",
       "date": "YYYY-MM-DD (optional)",
       "passages": [
-        { "id": "n1 (optional, recommended)", "text": "exact text", "locator": "p. 4 | Section 2" }
+        {
+          "id": "n1 (optional, recommended)",
+          "text": "exact text",
+          "locator": "p. 4 | Section 2",
+          "emissionsKind": "proposed_limit | reported (optional; set on passages stating an emissions figure)"
+        }
       ]
     }
   ],
@@ -103,7 +108,12 @@ Rules:
 - `excerpt` should be verbatim passage text. The UI checks it against the loaded passage
   and flags any excerpt that doesn't match.
 - Set `emissionsKind` on any citation that states emissions numbers, so proposed limits and
-  reported emissions are labeled separately.
+  reported emissions are labeled separately. Copy it from the cited passage's
+  `emissionsKind` in the record rather than inferring it.
+
+In the default local mode there is no server: the frontend implements this same request
+and response in `frontend/src/answer/`, calling Anthropic from the browser with the
+viewer's own API key. A future backend can reuse that pipeline unchanged.
 - Use `insufficient_evidence` when citations only partly support the answer, and `no_evidence`
   when nothing relevant was found.
 

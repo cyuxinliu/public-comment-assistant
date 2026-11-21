@@ -1,13 +1,16 @@
 /**
  * API service layer. Components import `api` from here and never call fetch directly.
  *
- * - By default, load the verified shared JSON locally with one labeled sample answer.
+ * - By default, load the verified shared JSON locally. Questions get live answers when the
+ *   user has entered their own Anthropic API key (answer/), else one labeled sample answer.
  * - VITE_USE_MOCKS=true explicitly enables fictional development fixtures.
  * - With VITE_API_BASE_URL set, calls go to the endpoints in docs/api-contract.md.
  */
 import { mockAnswer, type MockScenario } from '../mocks/answers'
 import { mockPermits } from '../mocks/permits'
 import { localAnswer, localPermits } from './local'
+import { getApiKey } from '../answer/apiKey'
+import { answerQuestion } from '../answer/pipeline'
 import type { AIAnswer, AnswerStatus, AskRequest, Permit, PermitSummary } from '../types'
 
 const BASE_URL = (import.meta.env.VITE_API_BASE_URL ?? '').replace(/\/+$/, '')
@@ -125,10 +128,15 @@ const localApi: PermitApi = {
     if (!permit) throw new ApiError('Permit not found.', 404)
     return structuredClone(permit)
   },
-  async ask(req) {
+  async ask(req, signal) {
     const permit = localPermits.find(p => p.id === req.permitId)
     if (!permit) throw new ApiError('Permit not found.', 404)
-    return localAnswer(permit, req)
+    // Live answers only with the user's own key; otherwise the labeled sample.
+    const key = getApiKey()
+    if (!key) return localAnswer(permit, req)
+    // Load the SDK only when someone actually asks with a key.
+    const { createClaudeCaller } = await import('../answer/claude')
+    return answerQuestion(permit, req, createClaudeCaller(key), signal)
   },
 }
 

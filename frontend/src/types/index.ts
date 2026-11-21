@@ -31,6 +31,12 @@ export interface Passage {
   text: string
   /** e.g. "p. 4" or "Emissions Summary" */
   locator: string
+  /**
+   * extension: set on passages that state an emissions figure, so citations are labeled
+   * from the verified record rather than from the model's guess. Leave unset for other
+   * passages (including existing limits, which are neither proposed nor reported).
+   */
+  emissionsKind?: EmissionsKind
 }
 
 export type DocumentType =
